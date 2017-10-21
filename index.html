@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Detect Faces Sample</title>
+    <title>CognoSeer</title>
     <meta charset="utf-8">
     <script src="../javascripts/dropzone.js"></script>
     <link rel="stylesheet" href="/stylesheets/dropzone.css" />
@@ -9,19 +9,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
-
-<div style="width:70%; margin:0px auto; ">
-    <form id ="myId" class="dropzone" enctype="multipart/form-data">
-      <span class="glyphicon glyphicon-download"></span><br/>
-    </form>
-    <br>
-    <div id="image_list">
-      <span id="hide" style="display: none"> Link to uploaded images </span><a id="link" href="#" target="_blank"></a>
-    </div>
-  </div>
-  <script src="../javascripts/upload.js">
-  </script>  
-
 <script type="text/javascript">
     function processImage2() {
         // **********************************************
@@ -145,7 +132,18 @@
 <h1>Detect Faces:</h1>
 Enter the URL to an image that includes a face or faces, then click the <strong>Analyze face</strong> button.
 <br><br>
-Image to analyze: <input type="text" name="inputImage" id="inputImage" value="" />
+Image to analyze: <input type="text" name="inputImage" id="inputImage" value="Enter image index number." />
+<div style="width:70%; margin:0px auto; ">
+    <form id ="myId" class="dropzone" enctype="multipart/form-data">
+      <span class="glyphicon glyphicon-download"></span><br/>
+    </form>
+    <br>
+    <div id="image_list">
+      <span id="hide" style="display: none"> Link to uploaded images </span><a id="link" href="#" target="_blank"></a>
+    </div>
+  </div>
+  <script src="../javascripts/upload.js">
+  </script>  
 <button onclick="processImage(); processImage2();">Analyze face</button>
 <br><br>
 <div id="wrapper" style="width:1020px; display:table;">

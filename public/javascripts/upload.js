@@ -1,8 +1,8 @@
   function show_link(link){
-    document.getElementById('hide').style.display = 'block';
+    /*document.getElementById('hide').style.display = 'block';
     var image_list = document.getElementById("inputImage");
     document.getElementsByTagName("input")[0].setAttribute("value", link);
-    console.log("Image Link: " + link)
+    console.log("Image Link: " + link)*/
   }
 
   function hide_link(){

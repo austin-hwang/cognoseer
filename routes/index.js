@@ -5,7 +5,11 @@ var path = require('path');
 var mongoose = require('mongoose');
 var config = require('../config/config');
 var ImgurImage = require('../models/ImgurImage');
+var fs = require("fs");
 
+var contents = fs.readFileSync(__dirname + "/images.json");
+// Define to JSON type
+var jsonContent = JSON.parse(contents);
 /* GET home page. */
 router.get('/', function(req, res, next) {
      res.sendFile(path.join(__dirname, '..', 'index.html'));
@@ -25,6 +29,14 @@ router.post('/image', function(req,res,next){
         imgurLink : req.body.link
     });
     console.log("Image URL: " + image.imgurLink);
+    jsonContent['images'].push(image.imgurLink);
+    fs.writeFile(__dirname + "/images.json", JSON.stringify(jsonContent, null, 4), (err) => {
+        if (err) {
+            console.error(err);
+            return;
+        };
+        console.log("File has been created");
+    });
     // save the image into the database
     image.save(function(err) {
       if (err) throw err;
