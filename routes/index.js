@@ -6,16 +6,12 @@ var config = require('../config/config');
 var ImgurImage = require('../models/ImgurImage');
 var fs = require("fs");
 
-
-var contents = fs.readFileSync(__dirname + "/images.json");
-// Define to JSON type
-var jsonContent = JSON.parse(contents);
 /* GET home page. */
 router.get('/', function(req, res, next) {
     var init = { 
       images:[] 
     };
-    fs.writeFile(__dirname + "/images.json", init, (err) => {
+    fs.writeFile(__dirname + "/images.json", JSON.stringify(init, null, 4), (err) => {
         if (err) {
             console.error(err);
             return;
@@ -25,8 +21,11 @@ router.get('/', function(req, res, next) {
      res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
-router.post('/image', function(req,res,next){
-    
+router.post('/image', function(req,res,next){   
+
+    var contents = fs.readFileSync(__dirname + "/images.json");
+    // Define to JSON type
+    var jsonContent = JSON.parse(contents);
     // connect to MongoDB
     mongoose.Promise = global.Promise;
 
@@ -39,7 +38,10 @@ router.post('/image', function(req,res,next){
         imgurLink : req.body.link
     });
     console.log("Image URL: " + image.imgurLink);
-    jsonContent['images'].push(image.imgurLink);
+    if (image.imgurLink)
+    {
+      jsonContent['images'].push(image.imgurLink);
+    }
     fs.writeFile(__dirname + "/images.json", JSON.stringify(jsonContent, null, 4), (err) => {
         if (err) {
             console.error(err);
@@ -56,5 +58,14 @@ router.post('/image', function(req,res,next){
     console.log(jsonContent.images);
     mongoose.connection.close();    
 });
+
+var happiness, sadness, anger, neutral, fear, disgust, contempt, surprise = 0;
+var age = 0;
+var male, female = 0;
+router.post('/send-data'), function(req, res, next){
+  for(var i = 0; i < req.body.length; i++){
+
+  }
+}
 
 module.exports = router;

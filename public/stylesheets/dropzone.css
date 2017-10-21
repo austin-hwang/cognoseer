@@ -204,6 +204,7 @@
       .dropzone .dz-preview:hover .dz-details {
         opacity: 1; }
     .dropzone .dz-preview.dz-file-preview .dz-image {
+      z-index: 1;
       border-radius: 20px;
       background: #999;
       background: linear-gradient(to bottom, #eee, #ddd); }
@@ -266,6 +267,7 @@
       -webkit-filter: blur(8px);
       filter: blur(8px); }
     .dropzone .dz-preview .dz-image {
+      z-index: 1;
       border-radius: 20px;
       overflow: hidden;
       width: 120px;
@@ -274,6 +276,7 @@
       display: block;
       z-index: 10; }
       .dropzone .dz-preview .dz-image img {
+        z-index: 1;
         display: block; }
     .dropzone .dz-preview.dz-success .dz-success-mark {
       -webkit-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);
