@@ -4,12 +4,12 @@ Using the Microsoft Azure Computer Vision API and Face API, CognoSeer takes even
 
 Best of all, it's crowd-sourced. Instead of having to rely on their own limited set of photographs, planners can get images from participants. By using both their own images and those images from attendees, organizers get a vastly greater pool of data through Cognoseer.
 
-How to Use:
+**How to Use:**
 1. Upload images by dragging and dropping or selecting through file viewer.
 2. Enter the image index of the photo that you want to analyze.
 3. Click 'Analyze Image' and let CognoSeer do its magic!
 
-Future Features:
+**Future Features:**
 1. Use facial recognition to organize albums by individuals in the photos.
   * Users can opt in or out of having their photos shared. 
   * Enable user and admin accounts to identify specific people in photos.
