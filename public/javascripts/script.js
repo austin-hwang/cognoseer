@@ -1,6 +1,38 @@
-var happiness, sadness, anger, neutral, fear, disgust, contempt, surprise = 0;
+var happinessTotal = 0;
+var sadnessTotal = 0;
+var angerTotal = 0;
+var neutralTotal = 0; 
+var fearTotal = 0; 
+var disgustTotal = 0;
+var contemptTotal = 0;
+var surpriseTotal = 0;
+var ageTotal = 0;
+var maleTotal = 0;
+var femaleTotal = 0;
+var peopleTotal = 0;
+var hapSlideTotal = 0;
+var madSlideTotal = 0;
+
+var happiness = 0;
+var sadness = 0;
+var anger = 0;
+var neutral = 0;
+var fear = 0;
+var disgust = 0;
+var contempt = 0;
+var surprise = 0;
 var age = 0;
-var male, female, people = 0;
+var hapSlide = 0;
+var madSlide = 0;
+
+
+function value(value, slide) {
+  $("#" + slide).val(value);
+}
+
+function getEmotionScore(var1, var2) {
+    return .5 + (var1/2) + (var2/2);
+}
 
 function getData(){
     var data;           
@@ -19,14 +51,6 @@ function getData(){
     xhr.send();
 
 }
-/*
-function sendData(data){
-
-  var xhr = new XMLHttpRequest();
-    xhr.open('PUT', 'http://localhost:3000/image', true);
-    console.log("Testing: " + data);
-    xhr.send(JSON.stringify(data, null, 2));
-}*/
    
 function processImage(data) {
     console.log("Value: " + parseInt(document.getElementById("inputImage").value));
@@ -83,7 +107,48 @@ function processImage(data) {
     .done(function(data) {
         // Show formatted JSON on webpage.
         $("#responseTextArea").val(JSON.stringify(data, null, 2));
-        sendData(data);
+        peopleTotal++;
+        happinessTotal += parseFloat(data[0].faceAttributes.emotion.happiness)/peopleTotal;
+        sadnessTotal += parseFloat(data[0].faceAttributes.emotion.sadness)/peopleTotal;
+        angerTotal += parseFloat(data[0].faceAttributes.emotion.anger)/peopleTotal;
+        neutralTotal += parseFloat(data[0].faceAttributes.emotion.neutral)/peopleTotal;
+        fearTotal += parseFloat(data[0].faceAttributes.emotion.fear)/peopleTotal;
+        disgustTotal += parseFloat(data[0].faceAttributes.emotion.disgust)/peopleTotal;
+        contemptTotal += parseFloat(data[0].faceAttributes.emotion.contempt)/peopleTotal;
+        surpriseTotal += parseFloat(data[0].faceAttributes.emotion.surprise)/peopleTotal;
+        ageTotal += parseFloat(data[0].faceAttributes.age)/peopleTotal;
+        if (data[0].faceAttributes.gender === "male") {
+            maleTotal++;
+        }
+        else if (data[0].faceAttributes.gender === "female") {
+            femaleTotal++;
+        }
+        hapSlideTotal = getEmotionScore(happinessTotal, sadnessTotal);
+        madSlideTotal = getEmotionScore(angerTotal, neutralTotal);
+
+        value(hapSlideTotal, "happinessTotal");
+        value(madSlideTotal, "angerTotal");
+        value(contemptTotal, "contemptTotal");
+        value(fearTotal, "fearTotal");
+        value(surpriseTotal, "surpriseTotal");
+
+        happiness = parseFloat(data[0].faceAttributes.emotion.happiness);
+        sadness = parseFloat(data[0].faceAttributes.emotion.sadness);
+        anger = parseFloat(data[0].faceAttributes.emotion.anger);
+        neutral = parseFloat(data[0].faceAttributes.emotion.neutral);
+        fear = parseFloat(data[0].faceAttributes.emotion.fear);
+        disgust = parseFloat(data[0].faceAttributes.emotion.disgust);
+        contempt = parseFloat(data[0].faceAttributes.emotion.contempt);
+        surprise = parseFloat(data[0].faceAttributes.emotion.surprise);
+        age = parseFloat(data[0].faceAttributes.age);
+        hapSlide = getEmotionScore(happiness, sadness);
+        madSlide = getEmotionScore(anger, neutral);
+
+        value(hapSlide, "happiness");
+        value(madSlide, "anger");
+        value(contempt, "contempt");
+        value(fear, "fear");
+        value(surprise, "surprise");
     })
 
     .fail(function(jqXHR, textStatus, errorThrown) {

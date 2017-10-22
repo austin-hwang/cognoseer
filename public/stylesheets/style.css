@@ -7,6 +7,151 @@ a {
   color: #00B7FF;
 }
 
+ input[type=text] {
+    width: 4%;
+    padding: 5px 5px;
+      margin: 0px 0;
+    box-sizing: border-box;
+    border: 2.5px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input[type=text]:focus {
+    border: 2.5px solid #800000;
+}
+
+  .button {
+    background-color: #800000; /* Crimson */
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+  .move {
+   display: inline;
+  }
+  /*slider looks*/
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 3px; /* Specified height */
+    background: #800; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: .85; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+ .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 18px;
+    border-radius: 20%;
+    background:   #DAA520;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #DAA520;
+    cursor: pointer;
+}
+
+.sliderTotal {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 3px; /* Specified height */
+    background: #FFF; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: .85; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+ .sliderTotal::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 18px;
+    border-radius: 20%;
+    background:   #DAA520;
+    cursor: pointer;
+}
+
+.sliderTotal::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #DAA520;
+    cursor: pointer;
+}
+
+  .jumbotron {
+      background-color: #800000;
+      color: #fff;
+      padding: 100px 25px;
+  }
+  .container-fluid {
+      background-color: #800000;
+      padding: 60px 50px;
+      color: #fff;
+  }
+  .container-fluid2 {
+      background-color: #ffffff;
+      padding: 60px 50px;
+      color: #800000;
+  }
+
+  .bg-grey {
+      background-color: #800000;
+  }
+  .logo-small {
+      color: #800000;
+      font-size: 50px;
+  }
+  .logo {
+      color: #f4511e;
+      font-size: 200px;
+  }
+    .navbar {
+      margin-bottom: 0;
+      background-color: #560000;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #800000 !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+.srcImage {
+    object-fit: cover;
+}
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */

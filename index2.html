@@ -12,9 +12,20 @@
 </head>
 <body>
 <script type="text/javascript">
-var happiness, sadness, anger, neutral, fear, disgust, contempt, surprise = 0;
+var happiness = 0;
+var sadness = 0;
+var anger = 0;
+var neutral = 0; 
+var fear = 0; 
+var disgust = 0;
+var contempt = 0;
+var surprise = 0;
 var age = 0;
-var male, female, people = 0;
+var male = 0;
+var female = 0;
+var people = 0;
+var hapSlide = 0;
+var madSlide = 0;
 
 function getData(){
     var data;           
@@ -33,14 +44,10 @@ function getData(){
     xhr.send();
 
 }
-/*
-function sendData(data){
 
-  var xhr = new XMLHttpRequest();
-    xhr.open('PUT', 'http://localhost:3000/image', true);
-    console.log("Testing: " + data);
-    xhr.send(JSON.stringify(data, null, 2));
-}*/
+function getEmotionScore(var1, var2) {
+    return .5 + (var1/2) + (var2/2);
+}
    
 function processImage(data) {
     console.log("Value: " + parseInt(document.getElementById("inputImage").value));
@@ -97,7 +104,24 @@ function processImage(data) {
     .done(function(data) {
         // Show formatted JSON on webpage.
         $("#responseTextArea").val(JSON.stringify(data, null, 2));
-        sendData(data);
+        people++;
+        happiness += parseFloat(data[0].faceAttributes.emotion.happiness)/people;
+        sadness += parseFloat(data[0].faceAttributes.emotion.sadness)/people;
+        anger += parseFloat(data[0].faceAttributes.emotion.anger)/people;
+        neutral += parseFloat(data[0].faceAttributes.emotion.neutral)/people;
+        fear += parseFloat(data[0].faceAttributes.emotion.fear)/people;
+        disgust += parseFloat(data[0].faceAttributes.emotion.disgust)/people;
+        contempt += parseFloat(data[0].faceAttributes.emotion.contempt)/people;
+        surprise += parseFloat(data[0].faceAttributes.emotion.surprise)/people;
+        age += parseFloat(data[0].faceAttributes.age)/people;
+        if (data[0].faceAttributes.gender === "male") {
+            male++;
+        }
+        else if (data[0].faceAttributes.gender === "female") {
+            female++;
+        }
+        hapSlide = getEmotionScore(happiness, sadness);
+        madSlide = getEmotionScore(anger, neutral);
     })
 
     .fail(function(jqXHR, textStatus, errorThrown) {

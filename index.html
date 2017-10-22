@@ -31,99 +31,9 @@ function preview_images()
  }
 }
 </script>
-  <style>
-  .move {
-   display: inline;
-  }
-  /*slider looks*/
-  .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 100%; /* Full-width */
-    height: 3px; /* Specified height */
-    background: #ffffff; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: .85; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-  }
- .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 10px;
-    height: 18px;
-    border-radius: 20%;
-    background:   #DAA520;
-    cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #DAA520;
-    cursor: pointer;
-}
-
-  .jumbotron {
-      background-color: #800000;
-      color: #fff;
-      padding: 100px 25px;
-  }
-  .container-fluid {
-      background-color: #800000;
-      padding: 60px 50px;
-      color: #fff;
-  }
-  .container-fluid2 {
-      background-color: #ffffff;
-      padding: 60px 50px;
-      color: #800000;
-  }
-
-  .bg-grey {
-      background-color: #800000;
-  }
-  .logo-small {
-      color: #800000;
-      font-size: 50px;
-  }
-  .logo {
-      color: #f4511e;
-      font-size: 200px;
-  }
-    .navbar {
-      margin-bottom: 0;
-      background-color: #800000;
-      z-index: 9999;
-      border: 0;
-      font-size: 12px !important;
-      line-height: 1.42857143 !important;
-      letter-spacing: 4px;
-      border-radius: 0;
-  }
-  .navbar li a, .navbar .navbar-brand {
-      color: #fff !important;
-  }
-  .navbar-nav li a:hover, .navbar-nav li.active a {
-      color: #f4511e !important;
-      background-color: #fff !important;
-  }
-  .navbar-default .navbar-toggle {
-      border-color: transparent;
-      color: #fff !important;
-  }
-
-  @media screen and (max-width: 768px) {
-    .col-sm-4 {
-      text-align: center;
-      margin: 25px 0;
-    }
-  }
-  </style>
 </head>
 
-<body style="font-family:Lato, sans-serif;" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="value(-5, happiness); stopChange()">
+<body style="font-family:Lato, sans-serif;" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" stopChange()">
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -152,10 +62,9 @@ function preview_images()
 
 <!-- Upload section -->
 <div class="container">
-  <h1>Detect Faces:</h1>
-Enter the URL to an image that includes a face or faces, then click the <strong>Analyze face</strong> button.
+  <h1 align="center">Detect Faces:</h1>
+<p align="center">Enter the URL to an image that includes a face or faces, then click the <strong>Analyze face</strong> button.</p>
 <br><br>
-Image to analyze: <input type="text" name="inputImage" id="inputImage" placeholder ="Enter image index number." value=""/>
 <div style="width:70%; margin:0px auto; ">
     <form id ="myId" class="dropzone" enctype="multipart/form-data">
       <span class="glyphicon glyphicon-download"></span><br/>
@@ -171,8 +80,14 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage" placehold
 <br><br>
 <!-- Trigger/Open The Modal -->
 
-<button id="myBtn">Analyze Picture</button>
-
+<div class="col-md-12">
+  <p align="center">
+  <label for="inputImage">Image index to analyze: </label>
+  <input type="text" id="inputImage" name="inputImage">
+  <button id="myBtn" class="button" >Analyze Image</button>
+</p>
+      
+    </div>
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -184,12 +99,26 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage" placehold
     </div>
     <div class="modal-body">
       <div id="wrapper" style="width:1020px; display:table;">
-    <div id="imageDiv" style="max-width:420px; display:table-cell;">
+    <div class="col-sm-8" id="imageDiv" style="max-width:420px; display:table-cell;">
         Source image:
         <br><br>
-        <img id="sourceImage" style="height:400px;" />
+        <img id="sourceImage" style="max-height:600px; max-width:400px" class="srcImage" />
     </div>
-     <div id="jsonOutput" style="width:600px; display:table-cell;">
+    <div class="col-sm-4" style="width:600px; display:table-cell;">
+       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F641; Sadness</h4><h4 style="float: right; text-align=right; font-size:300%;"> Happiness &#x1F600;</h4></p>
+      <input type="range" id="happiness" name="emotion" class="slider" min="0" max="1" step=".001">
+       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F610; Neutral</h4><h4 style="float: right; text-align=right; font-size:300%;"> Anger &#x1F621;</h4></p>
+      <input type="range" id="anger" name="emotion" class="slider" min="0" max="1" step=".001">
+       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F62E; No Contempt</h4><h4 style="float: right; text-align=right; font-size:300%;"> Contempt &#x1F624;</h4></p>
+      <input type="range" id="contempt" name="emotion" class="slider" min="0" max="1" step=".001">
+       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F644; No Fear</h4><h4 style="float: right; text-align=right; font-size:300%;"> Fear &#x1F631;</h4></p>
+      <input type="range" id="fear" name="emotion" class="slider" min="0" max="1" step=".001">
+      <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F634; No Surprise</h4><h4 style="float: right; text-align=right; font-size:300%;"> Surprise &#x1F632;</h4></p>
+      <input type="range" id="surprise" name="emotion" class="slider" min="0" max="1" step=".001">
+    </div>
+     
+
+     <!--<div id="jsonOutput" style="width:600px; display:table-cell;">
         Response:
         <br><br>
         <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
@@ -198,7 +127,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage" placehold
         Response2:
         <br><br>
         <textarea id="responseTextArea2" class="UIInput" style="width:580px; height:400px;"></textarea>
-    </div>
+    </div>-->
 </div>
     </div>
     <div class="modal-footer">
@@ -243,25 +172,25 @@ window.onclick = function(event) {
   <div class="row">
     <div class="col-md-2">
        <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F641;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F600;</h4></p>
-      <input type="range" id="happiness" name="emotion" class="slider" min="-10" max="10" step="any">
+      <input type="range" id="happinessTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
     </div>
     <div class="col-md-2">
       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>
-      <input type="range" id="anger" name="emotion" class="slider" min="-10" max="10" step="any">
+      <input type="range" id="angerTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
     </div>
     <div class="col-md-2">
-      <h3 style=id="gender" align="center">Gender: </h3>
+      <h3 id="genderTotal" align="center">Gender: </h3>
     </div>
     <div class="col-md-2">
-      <h3 style=id="age" align="center">Age: </h3>
-    </div>
-    <div class="col-md-2">
-       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>
-      <input type="range" id="contempt" name="emotion" class="slider" min="-10" max="10" step="any">
+      <h3 id="ageTotal" align="center">Age: </h3>
     </div>
     <div class="col-md-2">
        <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>
-      <input type="range" id="fear" name="emotion" class="slider" min="-10" max="10" step="any">
+      <input type="range" id="contemptTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+    </div>
+    <div class="col-md-2">
+       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>
+      <input type="range" id="fearTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
     </div>
   </div>
 </div>
@@ -460,9 +389,6 @@ window.onclick = function(event) {
 
 <!-- FUNCTIONS -->
 <script>
-function value(value, slide) {
-  $(slide).val(value);
-}
 
 function stopChange() {
   var index;
