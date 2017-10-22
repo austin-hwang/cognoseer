@@ -33,7 +33,7 @@ function preview_images()
 </script>
 </head>
 
-<body style="font-family:Lato, sans-serif;" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" stopChange()">
+<body style="font-family:Lato, sans-serif;" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="stopChange()">
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -100,11 +100,17 @@ function preview_images()
     <div class="modal-body">
       <div id="wrapper" style="width:1020px; display:table;">
     <div class="col-sm-8" id="imageDiv" style="max-width:420px; display:table-cell;">
-        Source image:
         <br><br>
         <img id="sourceImage" style="max-height:600px; max-width:400px" class="srcImage" />
+        <br><br>
     </div>
-    <div class="col-sm-4" style="width:600px; display:table-cell;">
+
+    <div class="col-sm-4">
+            <h4 style="float: left; text-align=left; font-size:300%;" id="genderTotal" align="center"> Gender: </h4> <br><br><br><br>
+
+<h4 style="float: left; text-align=left; font-size:300%;" id="ageTotal" align="center"> Age: </h4> <br><br><br><br>
+</div>
+    <div class="col-sm-4" style="width:580px; display:table-cell;">
        <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F641; Sadness</h4><h4 style="float: right; text-align=right; font-size:300%;"> Happiness &#x1F600;</h4></p>
       <input type="range" id="happiness" name="emotion" class="slider" min="0" max="1" step=".001">
        <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F610; Neutral</h4><h4 style="float: right; text-align=right; font-size:300%;"> Anger &#x1F621;</h4></p>
@@ -170,31 +176,64 @@ window.onclick = function(event) {
 <!-- Container (About Section) -->
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-2">
-       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F641;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F600;</h4></p>
-      <input type="range" id="happinessTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    </div>
-    <div class="col-md-2">
-      <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>
-      <input type="range" id="angerTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    </div>
-    <div class="col-md-2">
-      <h3 id="genderTotal" align="center">Gender: </h3>
-    </div>
-    <div class="col-md-2">
-      <h3 id="ageTotal" align="center">Age: </h3>
-    </div>
-    <div class="col-md-2">
-       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>
-      <input type="range" id="contemptTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    </div>
-    <div class="col-md-2">
-       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>
-      <input type="range" id="fearTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+    <div class="col-md-12">
+      <h1 align="center">Event Statistics</h1>
     </div>
   </div>
+  <br><hr noshade="#fff">
+  <div class="row">
+    <div class="col-md-4">
+      <h3 id="maleTotal" align="center">Male Participants: </h3>
+    </div>
+    <div class="col-md-4">
+      <h3 id="femaleTotal" align="center">Female Participants: </h3>
+    </div>
+    <div class="col-md-4">
+      <h3 id="avgAge" align="center">Average Age: </h3>
+    </div>
+  </div>
+  <br><hr noshade="#fff">
+  <div class="row">
+    <div class="col-md-4">
+      <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F641; Sadness</h4><h4 style="float: right; text-align=right; font-size:200%;"> Happiness &#x1F600;</h4></p>
+      <input type="range" id="happiness" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+    </div>
+    <div class="col-md-4">
+       <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F610; Neutral</h4><h4 style="float: right; text-align=right; font-size:200%;"> Anger &#x1F621;</h4></p>
+      <input type="range" id="anger" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+    </div>
+    <div class="col-md-4">
+    <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F62E; No Contempt</h4><h4 style="float: right; text-align=right; font-size:200%;"> Contempt &#x1F624;</h4></p>
+      <input type="range" id="contempt" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-4">
+      <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F644; No Fear</h4><h4 style="float: right; text-align=right; font-size:200%;"> Fear &#x1F631;</h4></p>
+      <input type="range" id="fear" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+    </div>
+    <div class="col-md-4">
+       <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F634; No Surprise</h4><h4 style="float: right; text-align=right; font-size:200%;"> Surprise &#x1F632;</h4></p>
+       <input type="range" id="surprise" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  <br><hr noshade="#fff">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Celebrities Detected: </h3>
+      <h3 style="display:inline-block" id="numCeleb" align="center">Sorry, no one famous showed up &#x1F614;</h3>
+    </div>
+    <div class="col-md-4">
+      <h3 id="numPhoto" align="center">&#x1F4F7; Photos Taken: </h3>
+    </div>
+  </div>
+  
 </div>
-
 
 
 <!-- About section -->

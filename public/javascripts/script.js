@@ -13,25 +13,12 @@ var peopleTotal = 0;
 var hapSlideTotal = 0;
 var madSlideTotal = 0;
 
-var happiness = 0;
-var sadness = 0;
-var anger = 0;
-var neutral = 0;
-var fear = 0;
-var disgust = 0;
-var contempt = 0;
-var surprise = 0;
-var age = 0;
-var hapSlide = 0;
-var madSlide = 0;
-
-
 function value(value, slide) {
   $("#" + slide).val(value);
 }
 
 function getEmotionScore(var1, var2) {
-    return .5 + (var1/2) + (var2/2);
+    return .5 + (var1/2) - (var2/2);
 }
 
 function getData(){
@@ -107,21 +94,25 @@ function processImage(data) {
     .done(function(data) {
         // Show formatted JSON on webpage.
         $("#responseTextArea").val(JSON.stringify(data, null, 2));
-        peopleTotal++;
-        happinessTotal += parseFloat(data[0].faceAttributes.emotion.happiness)/peopleTotal;
-        sadnessTotal += parseFloat(data[0].faceAttributes.emotion.sadness)/peopleTotal;
-        angerTotal += parseFloat(data[0].faceAttributes.emotion.anger)/peopleTotal;
-        neutralTotal += parseFloat(data[0].faceAttributes.emotion.neutral)/peopleTotal;
-        fearTotal += parseFloat(data[0].faceAttributes.emotion.fear)/peopleTotal;
-        disgustTotal += parseFloat(data[0].faceAttributes.emotion.disgust)/peopleTotal;
-        contemptTotal += parseFloat(data[0].faceAttributes.emotion.contempt)/peopleTotal;
-        surpriseTotal += parseFloat(data[0].faceAttributes.emotion.surprise)/peopleTotal;
-        ageTotal += parseFloat(data[0].faceAttributes.age)/peopleTotal;
-        if (data[0].faceAttributes.gender === "male") {
-            maleTotal++;
-        }
-        else if (data[0].faceAttributes.gender === "female") {
-            femaleTotal++;
+
+        for (var i = 0; i < data.length; i++)
+        {
+            peopleTotal++;
+            happinessTotal += parseFloat(data[i].faceAttributes.emotion.happiness)/peopleTotal;
+            sadnessTotal += parseFloat(data[i].faceAttributes.emotion.sadness)/peopleTotal;
+            angerTotal += parseFloat(data[i].faceAttributes.emotion.anger)/peopleTotal;
+            neutralTotal += parseFloat(data[i].faceAttributes.emotion.neutral)/peopleTotal;
+            fearTotal += parseFloat(data[i].faceAttributes.emotion.fear)/peopleTotal;
+            disgustTotal += parseFloat(data[i].faceAttributes.emotion.disgust)/peopleTotal;
+            contemptTotal += parseFloat(data[i].faceAttributes.emotion.contempt)/peopleTotal;
+            surpriseTotal += parseFloat(data[i].faceAttributes.emotion.surprise)/peopleTotal;
+            ageTotal += parseFloat(data[i].faceAttributes.age)/peopleTotal;
+            if (data[i].faceAttributes.gender === "male") {
+                maleTotal++;
+            }
+            else if (data[i].faceAttributes.gender === "female") {
+                femaleTotal++;
+            }
         }
         hapSlideTotal = getEmotionScore(happinessTotal, sadnessTotal);
         madSlideTotal = getEmotionScore(angerTotal, neutralTotal);
@@ -132,17 +123,57 @@ function processImage(data) {
         value(fearTotal, "fearTotal");
         value(surpriseTotal, "surpriseTotal");
 
-        happiness = parseFloat(data[0].faceAttributes.emotion.happiness);
-        sadness = parseFloat(data[0].faceAttributes.emotion.sadness);
-        anger = parseFloat(data[0].faceAttributes.emotion.anger);
-        neutral = parseFloat(data[0].faceAttributes.emotion.neutral);
-        fear = parseFloat(data[0].faceAttributes.emotion.fear);
-        disgust = parseFloat(data[0].faceAttributes.emotion.disgust);
-        contempt = parseFloat(data[0].faceAttributes.emotion.contempt);
-        surprise = parseFloat(data[0].faceAttributes.emotion.surprise);
-        age = parseFloat(data[0].faceAttributes.age);
+        var happiness = 0;
+        var sadness = 0;
+        var anger = 0;
+        var neutral = 0;
+        var fear = 0;
+        var disgust = 0;
+        var contempt = 0;
+        var surprise = 0;
+        var age = 0;
+        var gender = 0;
+        var hapSlide = 0;
+        var madSlide = 0;
+        var numPeople = 0;
+
+        for (var i = 0; i < data.length; i++)
+        {
+            happiness += parseFloat(data[i].faceAttributes.emotion.happiness);
+            sadness += parseFloat(data[i].faceAttributes.emotion.sadness);
+            anger += parseFloat(data[i].faceAttributes.emotion.anger);
+            neutral += parseFloat(data[i].faceAttributes.emotion.neutral);
+            fear += parseFloat(data[i].faceAttributes.emotion.fear);
+            disgust += parseFloat(data[i].faceAttributes.emotion.disgust);
+            contempt += parseFloat(data[i].faceAttributes.emotion.contempt);
+            surprise += parseFloat(data[i].faceAttributes.emotion.surprise);
+            age += parseFloat(data[i].faceAttributes.age);
+            numPeople++;
+        }
+
+        happiness /= numPeople;
+        sadness /= numPeople;
+        anger /= numPeople;
+        neutral /= numPeople;
+        fear /= numPeople;
+        disgust /= numPeople;
+        contempt /= numPeople;
+        surprise /= numPeople;
+        age /= numPeople;
+
+        /* happiness += parseFloat(data[0].faceAttributes.emotion.happiness);
+        sadness += parseFloat(data[0].faceAttributes.emotion.sadness);
+        anger += parseFloat(data[0].faceAttributes.emotion.anger);
+        neutral += parseFloat(data[0].faceAttributes.emotion.neutral);
+        fear += parseFloat(data[0].faceAttributes.emotion.fear);
+        disgust += parseFloat(data[0].faceAttributes.emotion.disgust);
+        contempt += parseFloat(data[0].faceAttributes.emotion.contempt);
+        surprise += parseFloat(data[0].faceAttributes.emotion.surprise);
+        age += parseFloat(data[0].faceAttributes.age);*/
+
         hapSlide = getEmotionScore(happiness, sadness);
         madSlide = getEmotionScore(anger, neutral);
+        console.log(data);
 
         value(hapSlide, "happiness");
         value(madSlide, "anger");
@@ -210,6 +241,10 @@ function processImage(data) {
     .done(function(data) {
         // Show formatted JSON on webpage.
         $("#responseTextArea2").val(JSON.stringify(data, null, 2));
+        if (data.result.celebrities[0].name)
+        {
+            document.getElementById("numCeleb").innerHTML = data.result.celebrities[0].name + " ";
+        }
     })
 
     .fail(function(jqXHR, textStatus, errorThrown) {
