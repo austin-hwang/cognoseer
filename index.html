@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>CognoSeer - Find Yourself</title>
+  <title>CognoSeer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
-<script src="../javascripts/script.js"></script>
-    <script src="../javascripts/dropzone.js"></script>
-    <link rel="stylesheet" href="/stylesheets/dropzone.css" />
-    <link rel="stylesheet" href="/stylesheets/dropzone_edit.css" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
+  <script src="../javascripts/script.js"></script>
+  <script src="../javascripts/dropzone.js"></script>
+  <link rel="stylesheet" href="/stylesheets/dropzone.css" />
+  <link rel="stylesheet" href="/stylesheets/dropzone_edit.css" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
 <script>
 function preview_images()
@@ -43,7 +43,6 @@ function preview_images()
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -56,23 +55,24 @@ function preview_images()
 </nav>
 
 <div class="jumbotron text-center" id="home">
-  <h1>CognoSeer</h1>
-  <p>Find yourself.</p>
+  <h1>
+   <a href="https://imgbb.com/"><img src="https://image.ibb.co/nH7m5m/sun_305283_960_720.png" alt="sun_305283_960_720" border="0"></a></h1>
+
+    <h1>
+  CognoSeer
+</h1>
 </div>
 
 <!-- Upload section -->
 <div class="container">
-  <h1 align="center">Detect Faces:</h1>
-<p align="center">Enter the URL to an image that includes a face or faces, then click the <strong>Analyze face</strong> button.</p>
+  <h1 style="color:#800" align="center">Analyze Faces:</h1>
+<p style="color:#800" align="center">Enter the URL to an image that includes a face or faces, then click the <strong>Analyze face</strong> button.</p>
 <br><br>
 <div style="width:70%; margin:0px auto; ">
     <form id ="myId" class="dropzone" enctype="multipart/form-data">
       <span class="glyphicon glyphicon-download"></span><br/>
     </form>
     <br>
-    <div id="image_list">
-      <span id="hide" style="display: none"> Link to uploaded images </span><a id="link" href="#" target="_blank"></a>
-    </div>
   </div>
   <script src="../javascripts/upload.js">
   </script>  
@@ -82,9 +82,10 @@ function preview_images()
 
 <div class="col-md-12">
   <p align="center">
-  <label for="inputImage">Image index to analyze: </label>
+  <label style="color:#800" for="inputImage">Image index to analyze: </label>
   <input type="text" id="inputImage" name="inputImage">
   <button id="myBtn" class="button" >Analyze Image</button>
+  <button id="myBtn2" class="button" >Analyze All</button>
 </p>
       
     </div>
@@ -98,42 +99,35 @@ function preview_images()
       <h2>Analysis</h2>
     </div>
     <div class="modal-body">
-      <div id="wrapper" style="width:1020px; display:table;">
-    <div class="col-sm-8" id="imageDiv" style="max-width:420px; display:table-cell;">
-        <br><br>
-        <img id="sourceImage" style="max-height:600px; max-width:400px" class="srcImage" />
-        <br><br>
-    </div>
-
-    <div class="col-sm-4">
-            <h4 style="float: left; text-align=left; font-size:300%;" id="genderTotal" align="center"> Gender: </h4> <br><br><br><br>
-
-<h4 style="float: left; text-align=left; font-size:300%;" id="ageTotal" align="center"> Age: </h4> <br><br><br><br>
-</div>
-    <div class="col-sm-4" style="width:580px; display:table-cell;">
-       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F641; Sadness</h4><h4 style="float: right; text-align=right; font-size:300%;"> Happiness &#x1F600;</h4></p>
-      <input type="range" id="happiness" name="emotion" class="slider" min="0" max="1" step=".001">
-       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F610; Neutral</h4><h4 style="float: right; text-align=right; font-size:300%;"> Anger &#x1F621;</h4></p>
-      <input type="range" id="anger" name="emotion" class="slider" min="0" max="1" step=".001">
-       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F62E; No Contempt</h4><h4 style="float: right; text-align=right; font-size:300%;"> Contempt &#x1F624;</h4></p>
-      <input type="range" id="contempt" name="emotion" class="slider" min="0" max="1" step=".001">
-       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F644; No Fear</h4><h4 style="float: right; text-align=right; font-size:300%;"> Fear &#x1F631;</h4></p>
-      <input type="range" id="fear" name="emotion" class="slider" min="0" max="1" step=".001">
-      <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F634; No Surprise</h4><h4 style="float: right; text-align=right; font-size:300%;"> Surprise &#x1F632;</h4></p>
-      <input type="range" id="surprise" name="emotion" class="slider" min="0" max="1" step=".001">
-    </div>
-     
-
-     <!--<div id="jsonOutput" style="width:600px; display:table-cell;">
-        Response:
-        <br><br>
-        <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
-    </div>
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
-        Response2:
-        <br><br>
-        <textarea id="responseTextArea2" class="UIInput" style="width:580px; height:400px;"></textarea>
-    </div>-->
+      <table>
+        <tr>
+          <th>
+              <br><br>
+              <img id="sourceImage" style="max-height:600px; max-width:400px" class="srcImage" />
+          </th>
+          <th style="padding:1px">
+            <div style="border-left:medium #800 solid; height:600px;" /> 
+          </th>
+           <th>
+        <h2 id="gender" style="float: center; text-align=center; font-size:250%;">Gender: </h2>
+          <h2 id="age" style="float: center; text-align=ceter; font-size:250%;">Age: </h2>
+      </th>
+         <th style="padding:1px">
+            <div style="border-left:medium #800 solid; height:600px;" /> 
+          </th>
+           <th>
+             <p style="width:550px"><h4 style="float: left; text-align=left; font-size:250%;">&#x1F641; Sadness</h4><h4 style="float: right; text-align=right; font-size:250%;"> Happiness &#x1F600;</h4></p>
+            <input type="range" id="happiness" name="emotion" class="slider" min="0" max="1" step=".001">
+             <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F610; Neutral</h4><h4 style="float: right; text-align=right; font-size:250%;"> Anger &#x1F621;</h4></p>
+            <input type="range" id="anger" name="emotion" class="slider" min="0" max="1" step=".001">
+             <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F62E; No Contempt</h4><h4 style="float: right; text-align=right; font-size:250%;"> Contempt &#x1F624;</h4></p>
+            <input type="range" id="contempt" name="emotion" class="slider" min="0" max="1" step=".001">
+             <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F644; No Fear</h4><h4 style="float: right; text-align=right; font-size:250%;"> Fear &#x1F631;</h4></p>
+            <input type="range" id="fear" name="emotion" class="slider" min="0" max="1" step=".001">
+            <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F634; No Surprise</h4><h4 style="float: right; text-align=right; font-size:250%;"> Surprise &#x1F632;</h4></p>
+            <input type="range" id="surprise" name="emotion" class="slider" min="0" max="1" step=".001">
+         </th>
+    </table>
 </div>
     </div>
     <div class="modal-footer">
@@ -149,6 +143,7 @@ var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
+var btn2 = document.getElementById("myBtn2");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -159,6 +154,9 @@ btn.onclick = function() {
     getData();
 }
 
+btn2.onclick = function() {
+    analyzeAll();
+}
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
@@ -183,53 +181,45 @@ window.onclick = function(event) {
   <br><hr noshade="#fff">
   <div class="row">
     <div class="col-md-4">
-      <h3 id="maleTotal" align="center">Male Participants: </h3>
+      <h3 id="maleTotal" align="center">Male Participants:</h3>
     </div>
     <div class="col-md-4">
-      <h3 id="femaleTotal" align="center">Female Participants: </h3>
+      <h3 id="femaleTotal" align="center">Female Participants:</h3>
     </div>
     <div class="col-md-4">
-      <h3 id="avgAge" align="center">Average Age: </h3>
+      <h3 id="avgAge" align="center">Average Age:</h3>
     </div>
   </div>
   <br><hr noshade="#fff">
-  <div class="row">
-    <div class="col-md-4">
-      <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F641; Sadness</h4><h4 style="float: right; text-align=right; font-size:200%;"> Happiness &#x1F600;</h4></p>
-      <input type="range" id="happiness" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    </div>
-    <div class="col-md-4">
-       <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F610; Neutral</h4><h4 style="float: right; text-align=right; font-size:200%;"> Anger &#x1F621;</h4></p>
-      <input type="range" id="anger" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    </div>
-    <div class="col-md-4">
-    <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F62E; No Contempt</h4><h4 style="float: right; text-align=right; font-size:200%;"> Contempt &#x1F624;</h4></p>
-      <input type="range" id="contempt" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    </div>
+  <div class="row" align="center">
+    <p><h2 style="float: center; text-align=center; font-size:300%">Emotions</h2></p>
   </div>
-  <br><br>
-  <div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-4">
-      <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F644; No Fear</h4><h4 style="float: right; text-align=right; font-size:200%;"> Fear &#x1F631;</h4></p>
-      <input type="range" id="fear" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    </div>
-    <div class="col-md-4">
-       <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F634; No Surprise</h4><h4 style="float: right; text-align=right; font-size:200%;"> Surprise &#x1F632;</h4></p>
-       <input type="range" id="surprise" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    </div>
-    <div class="col-md-2">
-    </div>
+  <br>
+  <div class="row" align="center">
+     <div class="col-md-2">
+     </div>
+       <div class="col-md-8" >
+            <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F641; Sadness</h4><h4 style="float: right; text-align=right; font-size:200%;"> Happiness &#x1F600;</h4></p>
+           <input type="range" id="happinessTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+            <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F610; Neutral</h4><h4 style="float: right; text-align=right; font-size:200%;"> Anger &#x1F621;</h4></p>
+           <input type="range" id="angerTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+            <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F62E; No Contempt</h4><h4 style="float: right; text-align=right; font-size:200%;"> Contempt &#x1F624;</h4></p>
+           <input type="range" id="contemptTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+            <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F644; No Fear</h4><h4 style="float: right; text-align=right; font-size:200%;"> Fear &#x1F631;</h4></p>
+           <input type="range" id="fearTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+           <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F634; No Surprise</h4><h4 style="float: right; text-align=right; font-size:200%;"> Surprise &#x1F632;</h4></p>
+           <input type="range" id="surpriseTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+         </div>
+     <div class="col-md-2">
+     </div>
   </div>
   <br><hr noshade="#fff">
   <div class="row">
     <div class="col-md-8">
-      <h3>Celebrities Detected: </h3>
-      <h3 style="display:inline-block" id="numCeleb" align="center">Sorry, no one famous showed up &#x1F614;</h3>
+      <h3 style="float:left" id="numCeleb" align="center">Celebrities Detected:&nbsp;</h3>
     </div>
     <div class="col-md-4">
-      <h3 id="numPhoto" align="center">&#x1F4F7; Photos Taken: </h3>
+      <h3 id="numPhoto" align="center">Photos Taken:</h3>
     </div>
   </div>
   
@@ -258,6 +248,7 @@ window.onclick = function(event) {
     </div>
   </div>
 
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <section class="team">
   <div class="container">
@@ -273,7 +264,7 @@ window.onclick = function(event) {
               </div>
               <h1 style="font-size:170%;">Austin Hwang</h1>
               <h2 style="font-size:100%;">A.B Candidate in CS</h2>
-              <p style="font-size:70%;">boiiiiiiiiiiiiiiii hehehehehehehehehehehehehehe</p>
+              <p style="font-size:100%;">Austin's a SoCal boy from Huntington Beach, CA but loving life in Massachusetts. Hit up Austin Hwang Photoography for photographs if you ever need any, he's a pro (I mean, just check out his and Victor's photos above!).</p>
             </div>
 
 
@@ -283,7 +274,7 @@ window.onclick = function(event) {
               </div>
               <h1 style="font-size:160%;">Manasi Maheshwari</h1>
               <h2 style="font-size:100%;">A.B Candidate in CS</h2>
-              <p style="font-size:70%;">boiiiiiiiiiiiiiiii hehehehehehehehehehehehehehe</p>
+              <p style="font-size:100%;">Manasi's from Fremont, CA but as much as the Bae Area beckons her, she loves exploring Cambridge and Boston in her free time. She enjoys long walks along the river and if you're ever looking for the best views, she'll probably be able to help you find them.</p>
             </div>
 
 
@@ -292,8 +283,8 @@ window.onclick = function(event) {
                 <img src="https://i.imgur.com/MHexTkm.jpg" class="img-responsive">
               </div>
               <h1 style="font-size:170%;">Victor Qin</h1>
-              <h2 style="font-size:100%;">A.B Candidate in CS</h2>
-              <p style="font-size:70%;">boiiiiiiiiiiiiiiii hehehehehehehehehehehehehehe</p>
+              <h2 style="font-size:100%;">A.B Candidate in MechE</h2>
+              <p style="font-size:100%;">Victor's been doing robotics for years now and can't remember a time when he didn't yearn to create and build new things. Born and raised in North Hollywood, CA, he loves going to the beach and loves even more to have new friends join him.</p>
             </div>
 
 
@@ -303,13 +294,50 @@ window.onclick = function(event) {
               </div>
               <h1 style="font-size:170%;">Lin Zhu</h1>
               <h2 style="font-size:100%;">A.B Candidate in CS</h2>
-              <p style="font-size:70%;">boiiiiiiiiiiiiiiii hehehehehehehehehehehehehehe</p>
+              <p style="font-size:100%;">Lin's a boba connoiseur from Berkeley, CA and don't you forget it. She loves running and going to the gym (and then stopping for donuts, because who doesn't love Krispy Kreme?). </p>
             </div>
-
-
-
-
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid2">
+    <h2 class="text-center">CONTACT</h2>
+    <div class="row">
+        <div class="col-sm-5">
+            <p style="font-size: 150%">Contact us and we'll get back to you within 24 hours.</p>
+            <p style="font-size: 150%"><span class="glyphicon glyphicon-map-marker"></span> Cambridge, MA</p>
+            <p style="font-size: 150%"><span class="glyphicon glyphicon-phone"></span> (714) 147 9012</p>
+            <p style="font-size: 150%"><span class="glyphicon glyphicon-envelope"></span> info@cognoseer.org</p>
+        </div>
+        <div class="col-sm-7 slideanim">
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="name" name="name" placeholder="Name" type="name" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                </div>
+            </div>
+            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button class="btn btn-default pull-right" type="submit">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid text-center">
+    <a href="#myPage" title="To Top">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    <p>All rights reserved &#x24B8; 2017 CognoSeer</p>
+</footer>
 
 <!-- Container (About Section) -->
 <!--<div class="container-fluid">-->
@@ -422,7 +450,7 @@ window.onclick = function(event) {
 <!--    </div>-->
 <!--  </div>-->
 <!--</div>-->
-
+<!-- Container (Contact Section) -->
 </body>
 </html>
 
@@ -439,11 +467,6 @@ function stopChange() {
   }
 
 }
-var age=5;
-$('#age').html('Age: ' + age);
-
-var gender = 'Male';
-$('#gender').html('Gender: ' + gender);
 
 </script>
 
