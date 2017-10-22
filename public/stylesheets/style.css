@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -54,7 +54,7 @@ a {
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #800;
     color: white;
 }
 
@@ -62,7 +62,7 @@ a {
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #800;
     color: white;
 }
 

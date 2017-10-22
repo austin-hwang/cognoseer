@@ -58,14 +58,15 @@ router.post('/image', function(req,res,next){
     console.log(jsonContent.images);
     mongoose.connection.close();    
 });
-
-var happiness, sadness, anger, neutral, fear, disgust, contempt, surprise = 0;
-var age = 0;
-var male, female = 0;
-router.post('/send-data'), function(req, res, next){
-  for(var i = 0; i < req.body.length; i++){
-
-  }
-}
-
+/*
+router.put('/image', function(req, res, next){
+  console.log("Entered put");
+  console.log(req.body);
+   console.log("Stuff: " + req.body.faceAttributes);
+  //   for(var i = 0; i < data.length; i++){
+  //     happiness += data.faceAttributes.emotion.happiness[0];
+  //     console.log("Happiness: " + happiness);
+  // }
+});
+*/
 module.exports = router;

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CognoSeer</title>
+    <meta charset="utf-8">
+    <script src="../javascripts/dropzone.js"></script>
+    <link rel="stylesheet" href="/stylesheets/dropzone.css" />
+    <link rel="stylesheet" href="/stylesheets/dropzone_edit.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+</head>
+<body>
+<script type="text/javascript">
+var happiness, sadness, anger, neutral, fear, disgust, contempt, surprise = 0;
+var age = 0;
+var male, female, people = 0;
+
+function getData(){
+    var data;           
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:3000/image', true);
+    xhr.onload = function (e) {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+                data = JSON.parse(xhr.responseText);
+            }
+        }
+        processImage(data);
+        processImage2(data);
+    };
+    xhr.send();
+
+}
+/*
+function sendData(data){
+
+  var xhr = new XMLHttpRequest();
+    xhr.open('PUT', 'http://localhost:3000/image', true);
+    console.log("Testing: " + data);
+    xhr.send(JSON.stringify(data, null, 2));
+}*/
+   
+function processImage(data) {
+    console.log("Value: " + parseInt(document.getElementById("inputImage").value));
+    console.log("Image links: " + data[1]);
+    // **********************************************
+    // *** Update or verify the following values. ***
+    // **********************************************
+
+    // Replace the subscriptionKey string value with your valid subscription key.
+    var subscriptionKey = "2445910071604e4dbb2ff57680673887";
+
+    // Replace or verify the region.
+    //
+    // You must use the same region in your REST API call as you used to obtain your subscription keys.
+    // For example, if you obtained your subscription keys from the westus region, replace
+    // "westcentralus" in the URI below with "westus".
+    //
+    // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
+    // a free trial subscription key, you should not need to change this region.
+    var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+
+    // Request parameters.
+    var params = {
+        "returnFaceId": "true",
+        "returnFaceLandmarks": "false",
+        "returnFaceAttributes": "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise",
+    };
+    //var images = [];
+
+    var sourceImageUrl = data.images[parseInt(document.getElementById("inputImage").value) - 1]; 
+
+    console.log("Source Image Url: " + sourceImageUrl);
+
+    // Display the image.
+    //var sourceImageUrl = document.getElementById("inputImage").value;
+    document.querySelector("#sourceImage").src = sourceImageUrl;
+
+    // Perform the REST API call.
+    $.ajax({
+        url: uriBase + "?" + $.param(params),
+
+        // Request headers.
+        beforeSend: function(xhrObj){
+            xhrObj.setRequestHeader("Content-Type","application/json");
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+        },
+
+        type: "POST",
+
+        // Request body.
+        data: '{"url": ' + '"' + sourceImageUrl + '"}',
+    })
+
+    .done(function(data) {
+        // Show formatted JSON on webpage.
+        $("#responseTextArea").val(JSON.stringify(data, null, 2));
+        sendData(data);
+    })
+
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        // Display error message.
+        var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+        errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ? 
+            jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
+        alert(errorString);
+    });
+};
+
+  function processImage2(data) {
+    // **********************************************
+    // *** Update or verify the following values. ***
+    // **********************************************
+
+    // Replace the subscriptionKey string value with your valid subscription key.
+    var subscriptionKey = "69cfa0f941224f0aa1041e6970f12af0";
+
+    // Replace or verify the region.
+    //
+    // You must use the same region in your REST API call as you used to obtain your subscription keys.
+    // For example, if you obtained your subscription keys from the westus region, replace
+    // "westcentralus" in the URI below with "westus".
+    //
+    // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
+    // a free trial subscription key, you should not need to change this region.
+    //
+    // Also, if you want to use the celebrities model, change "landmarks" to "celebrities" here and in
+    // uriBuilder.setParameter to use the Celebrities model.
+    var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/models/celebrities/analyze";
+
+    // Request parameters.
+    var params = {
+        "model": "celebrities", // Use "model": "celebrities" to use the Celebrities model.
+    };
+
+    // Display the image.
+   var sourceImageUrl = data.images[parseInt(document.getElementById("inputImage").value) - 1]; 
+    //var sourceImageUrl = document.getElementById("inputImage").value;
+    document.querySelector("#sourceImage").src = sourceImageUrl;
+
+    // Perform the REST API call.
+    $.ajax({
+        url: uriBase + "?" + $.param(params),
+
+        // Request headers.
+        beforeSend: function(xhrObj) {
+            xhrObj.setRequestHeader("Content-Type", "application/json");
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+        },
+
+        type: "POST",
+
+        // Request body.
+        data: '{"url": ' + '"' + sourceImageUrl + '"}',
+    })
+
+    .done(function(data) {
+        // Show formatted JSON on webpage.
+        $("#responseTextArea2").val(JSON.stringify(data, null, 2));
+    })
+
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        // Display error message.
+        var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+        errorString += (jqXHR.responseText === "") ? "" : jQuery.parseJSON(jqXHR.responseText).message;
+        alert(errorString);
+    });
+};
+</script>
+
+<h1>Detect Faces:</h1>
+Enter the URL to an image that includes a face or faces, then click the <strong>Analyze face</strong> button.
+<br><br>
+Image to analyze: <input type="text" name="inputImage" id="inputImage" placeholder ="Enter image index number." value=""/>
+<div style="width:70%; margin:0px auto; ">
+    <form id ="myId" class="dropzone" enctype="multipart/form-data">
+      <span class="glyphicon glyphicon-download"></span><br/>
+    </form>
+    <br>
+    <div id="image_list">
+      <span id="hide" style="display: none"> Link to uploaded images </span><a id="link" href="#" target="_blank"></a>
+    </div>
+  </div>
+  <script src="../javascripts/upload.js">
+  </script>  
+
+<br><br>
+<!-- Trigger/Open The Modal -->
+
+<button id="myBtn">Analyze Picture</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Modal Header</h2>
+    </div>
+    <div class="modal-body">
+      <div id="wrapper" style="width:1020px; display:table;">
+    <div id="jsonOutput" style="width:600px; display:table-cell;">
+        Response:
+        <br><br>
+        <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
+    </div>
+    <div id="jsonOutput" style="width:600px; display:table-cell;">
+        Response2:
+        <br><br>
+        <textarea id="responseTextArea2" class="UIInput" style="width:580px; height:400px;"></textarea>
+    </div>
+    <div id="imageDiv" style="width:420px; display:table-cell;">
+        Source image:
+        <br><br>
+        <img id="sourceImage" width="400" />
+    </div>
+</div>
+    </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+    getData();
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+</body>
+</html>

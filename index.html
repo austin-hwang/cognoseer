@@ -1,168 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CognoSeer</title>
-    <meta charset="utf-8">
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>CognoSeer - Find Yourself</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
+<script src="../javascripts/script.js"></script>
     <script src="../javascripts/dropzone.js"></script>
     <link rel="stylesheet" href="/stylesheets/dropzone.css" />
     <link rel="stylesheet" href="/stylesheets/dropzone_edit.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
-</head>
-<body>
-<script type="text/javascript">
-
-    function getData(){
-            var data;           
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost:3000/image', true);
-            xhr.onload = function (e) {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        console.log(xhr.responseText);
-                        data = JSON.parse(xhr.responseText);
-                    }
-                }
-                processImage(data);
-                processImage2(data);
-            };
-            xhr.send();
-
-        }
-       
-    function processImage(data) {
-        console.log("Value: " + parseInt(document.getElementById("inputImage").value));
-        console.log("Image links: " + data[1]);
-        // **********************************************
-        // *** Update or verify the following values. ***
-        // **********************************************
-
-        // Replace the subscriptionKey string value with your valid subscription key.
-        var subscriptionKey = "2445910071604e4dbb2ff57680673887";
-
-        // Replace or verify the region.
-        //
-        // You must use the same region in your REST API call as you used to obtain your subscription keys.
-        // For example, if you obtained your subscription keys from the westus region, replace
-        // "westcentralus" in the URI below with "westus".
-        //
-        // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
-        // a free trial subscription key, you should not need to change this region.
-        var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
-
-        // Request parameters.
-        var params = {
-            "returnFaceId": "true",
-            "returnFaceLandmarks": "false",
-            "returnFaceAttributes": "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise",
-        };
-        //var images = [];
-
-        var sourceImageUrl = data.images[parseInt(document.getElementById("inputImage").value) - 1]; 
-  
-        console.log("Source Image Url: " + sourceImageUrl);
-
-        // Display the image.
-        //var sourceImageUrl = document.getElementById("inputImage").value;
-        document.querySelector("#sourceImage").src = sourceImageUrl;
-
-        // Perform the REST API call.
-        $.ajax({
-            url: uriBase + "?" + $.param(params),
-
-            // Request headers.
-            beforeSend: function(xhrObj){
-                xhrObj.setRequestHeader("Content-Type","application/json");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            },
-
-            type: "POST",
-
-            // Request body.
-            data: '{"url": ' + '"' + sourceImageUrl + '"}',
-        })
-
-        .done(function(data) {
-            // Show formatted JSON on webpage.
-            $("#responseTextArea").val(JSON.stringify(data, null, 2));
-                var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-                xmlhttp.open('POST', 'http://localhost:3000/send-data', true);
-                xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                xmlhttp.send(JSON.stringify(data, null, 2));
-        })
-
-        .fail(function(jqXHR, textStatus, errorThrown) {
-            // Display error message.
-            var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
-            errorString += (jqXHR.responseText === "") ? "" : (jQuery.parseJSON(jqXHR.responseText).message) ? 
-                jQuery.parseJSON(jqXHR.responseText).message : jQuery.parseJSON(jqXHR.responseText).error.message;
-            alert(errorString);
-        });
-    };
-
-      function processImage2(data) {
-        // **********************************************
-        // *** Update or verify the following values. ***
-        // **********************************************
-
-        // Replace the subscriptionKey string value with your valid subscription key.
-        var subscriptionKey = "69cfa0f941224f0aa1041e6970f12af0";
-
-        // Replace or verify the region.
-        //
-        // You must use the same region in your REST API call as you used to obtain your subscription keys.
-        // For example, if you obtained your subscription keys from the westus region, replace
-        // "westcentralus" in the URI below with "westus".
-        //
-        // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
-        // a free trial subscription key, you should not need to change this region.
-        //
-        // Also, if you want to use the celebrities model, change "landmarks" to "celebrities" here and in
-        // uriBuilder.setParameter to use the Celebrities model.
-        var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/models/celebrities/analyze";
-
-        // Request parameters.
-        var params = {
-            "model": "celebrities", // Use "model": "celebrities" to use the Celebrities model.
-        };
-
-        // Display the image.
-       var sourceImageUrl = data.images[parseInt(document.getElementById("inputImage").value) - 1]; 
-        //var sourceImageUrl = document.getElementById("inputImage").value;
-        document.querySelector("#sourceImage").src = sourceImageUrl;
-
-        // Perform the REST API call.
-        $.ajax({
-            url: uriBase + "?" + $.param(params),
-
-            // Request headers.
-            beforeSend: function(xhrObj) {
-                xhrObj.setRequestHeader("Content-Type", "application/json");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            },
-
-            type: "POST",
-
-            // Request body.
-            data: '{"url": ' + '"' + sourceImageUrl + '"}',
-        })
-
-        .done(function(data) {
-            // Show formatted JSON on webpage.
-            $("#responseTextArea2").val(JSON.stringify(data, null, 2));
-        })
-
-        .fail(function(jqXHR, textStatus, errorThrown) {
-            // Display error message.
-            var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
-            errorString += (jqXHR.responseText === "") ? "" : jQuery.parseJSON(jqXHR.responseText).message;
-            alert(errorString);
-        });
-    };
+<script>
+function preview_images()
+{
+ var total_file=document.getElementById("images").files.length;
+ for(var i=0;i<total_file;i++)
+ {
+  $('#image_preview').append("<div class='col-md-3'><img class='img-responsive' src='"+URL.createObjectURL(event.target.files[i])+"'></div>");
+ }
+}
 </script>
+  <style>
+  .move {
+   display: inline;
+  }
+  /*slider looks*/
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 3px; /* Specified height */
+    background: #ffffff; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: .85; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+ .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 18px;
+    border-radius: 20%;
+    background:   #DAA520;
+    cursor: pointer;
+}
 
-<h1>Detect Faces:</h1>
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #DAA520;
+    cursor: pointer;
+}
+
+  .jumbotron {
+      background-color: #800000;
+      color: #fff;
+      padding: 100px 25px;
+  }
+  .container-fluid {
+      background-color: #800000;
+      padding: 60px 50px;
+      color: #fff;
+  }
+  .container-fluid2 {
+      background-color: #ffffff;
+      padding: 60px 50px;
+      color: #800000;
+  }
+
+  .bg-grey {
+      background-color: #800000;
+  }
+  .logo-small {
+      color: #800000;
+      font-size: 50px;
+  }
+  .logo {
+      color: #f4511e;
+      font-size: 200px;
+  }
+    .navbar {
+      margin-bottom: 0;
+      background-color: #800000;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #f4511e !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+  </style>
+</head>
+
+<body style="font-family:Lato, sans-serif;" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="value(-5, happiness); stopChange()">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#contact">TEAM</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center" id="home">
+  <h1>CognoSeer</h1>
+  <p>Find yourself.</p>
+</div>
+
+<!-- Upload section -->
+<div class="container">
+  <h1>Detect Faces:</h1>
 Enter the URL to an image that includes a face or faces, then click the <strong>Analyze face</strong> button.
 <br><br>
 Image to analyze: <input type="text" name="inputImage" id="inputImage" placeholder ="Enter image index number." value=""/>
@@ -190,11 +180,16 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage" placehold
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2>Modal Header</h2>
+      <h2>Analysis</h2>
     </div>
     <div class="modal-body">
       <div id="wrapper" style="width:1020px; display:table;">
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
+    <div id="imageDiv" style="max-width:420px; display:table-cell;">
+        Source image:
+        <br><br>
+        <img id="sourceImage" style="height:400px;" />
+    </div>
+     <div id="jsonOutput" style="width:600px; display:table-cell;">
         Response:
         <br><br>
         <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
@@ -204,15 +199,10 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage" placehold
         <br><br>
         <textarea id="responseTextArea2" class="UIInput" style="width:580px; height:400px;"></textarea>
     </div>
-    <div id="imageDiv" style="width:420px; display:table-cell;">
-        Source image:
-        <br><br>
-        <img id="sourceImage" width="400" />
-    </div>
 </div>
     </div>
     <div class="modal-footer">
-      <h3>Modal Footer</h3>
+      <h3> </h3>
     </div>
   </div>
 
@@ -246,5 +236,276 @@ window.onclick = function(event) {
     }
 }
 </script>
+</div>
+
+<!-- Container (About Section) -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F641;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F600;</h4></p>
+      <input type="range" id="happiness" name="emotion" class="slider" min="-10" max="10" step="any">
+    </div>
+    <div class="col-md-2">
+      <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>
+      <input type="range" id="anger" name="emotion" class="slider" min="-10" max="10" step="any">
+    </div>
+    <div class="col-md-2">
+      <h3 style=id="gender" align="center">Gender: </h3>
+    </div>
+    <div class="col-md-2">
+      <h3 style=id="age" align="center">Age: </h3>
+    </div>
+    <div class="col-md-2">
+       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>
+      <input type="range" id="contempt" name="emotion" class="slider" min="-10" max="10" step="any">
+    </div>
+    <div class="col-md-2">
+       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>
+      <input type="range" id="fear" name="emotion" class="slider" min="-10" max="10" step="any">
+    </div>
+  </div>
+</div>
+
+
+
+<!-- About section -->
+<div id="about" class="container-fluid2">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 align="center">About CognoSeer</h2>
+      <p align="center">CognoSeer utilizes the Microsoft Facial Recognition API. . .</p>
+    </div>
+  </div>
+</div>
+
+<div id="contact" class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 align="center">Meet the Team</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2></h2>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<section class="team">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="col-lg-12">
+          <div class="row pt-md">
+
+
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+              <div class="img-box">
+                <img src="https://i.imgur.com/zWIddhL.jpg" class="img-responsive">
+              </div>
+              <h1 style="font-size:170%;">Austin Hwang</h1>
+              <h2 style="font-size:100%;">A.B Candidate in CS</h2>
+              <p style="font-size:70%;">boiiiiiiiiiiiiiiii hehehehehehehehehehehehehehe</p>
+            </div>
+
+
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+              <div class="img-box">
+                <img src="https://i.imgur.com/r8ThBGc.jpg" class="img-responsive">
+              </div>
+              <h1 style="font-size:160%;">Manasi Maheshwari</h1>
+              <h2 style="font-size:100%;">A.B Candidate in CS</h2>
+              <p style="font-size:70%;">boiiiiiiiiiiiiiiii hehehehehehehehehehehehehehe</p>
+            </div>
+
+
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+              <div class="img-box">
+                <img src="https://i.imgur.com/MHexTkm.jpg" class="img-responsive">
+              </div>
+              <h1 style="font-size:170%;">Victor Qin</h1>
+              <h2 style="font-size:100%;">A.B Candidate in CS</h2>
+              <p style="font-size:70%;">boiiiiiiiiiiiiiiii hehehehehehehehehehehehehehe</p>
+            </div>
+
+
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+              <div class="img-box">
+                <img src="https://i.imgur.com/7awUIpe.jpg" class="img-responsive">
+              </div>
+              <h1 style="font-size:170%;">Lin Zhu</h1>
+              <h2 style="font-size:100%;">A.B Candidate in CS</h2>
+              <p style="font-size:70%;">boiiiiiiiiiiiiiiii hehehehehehehehehehehehehehe</p>
+            </div>
+
+
+
+
+</div>
+
+<!-- Container (About Section) -->
+<!--<div class="container-fluid">-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-2">-->
+<!--       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F641;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F600;</h4></p>-->
+<!--      <input type="range" id="happiness" name="emotion" class="slider" min="-10" max="10" step="any">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--      <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>-->
+<!--      <input type="range" id="anger" name="emotion" class="slider" min="-10" max="10" step="any">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--      <h3 style=id="gender" align="center">Gender: </h3>-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--      <h3 style=id="age" align="center">Age: </h3>-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>-->
+<!--      <input type="range" id="contempt" name="emotion" class="slider" min="-10" max="10" step="any">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--       <p><h4 style="float: left; text-align=left; font-size:300%;">&#x1F60D;</h4><h4 style="float: right; text-align=right; font-size:300%;"> &#x1F60D;</h4></p>-->
+<!--      <input type="range" id="fear" name="emotion" class="slider" min="-10" max="10" step="any">-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="container-fluid bg-grey">-->
+<!--  <div class="row">-->
+<!--    <div class="col-sm-4">-->
+<!--      <span class="glyphicon glyphicon-globe logo"></span>-->
+<!--    </div>-->
+<!--    <div class="col-sm-8" style="color:white;">-->
+<!--      <h2>Our Values</h2>-->
+<!--      <h4><strong>MISSION:</strong> Our mission lorem ipsum..</h4>-->
+<!--      <p><strong>VISION:</strong> Our vision Lorem ipsum..</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!-- Container (Services Section) -->
+<!--<div class="container-fluid text-center">-->
+<!--  <h2>SERVICES</h2>-->
+<!--  <h4>What we offer</h4>-->
+<!--  <br>-->
+<!--  <div class="row">-->
+<!--    <div class="col-sm-4">-->
+<!--      <span class="glyphicon glyphicon-off logo-small" style="color: #800000;"></span>-->
+<!--      <h4>POWER</h4>-->
+<!--      <p>Lorem ipsum dolor sit amet..</p>-->
+<!--    </div>-->
+<!--    <div class="col-sm-4">-->
+<!--      <span class="glyphicon glyphicon-heart logo-small" style="color: #800000;"></span>-->
+<!--      <h4>LOVE</h4>-->
+<!--      <p>Lorem ipsum dolor sit amet..</p>-->
+<!--    </div>-->
+<!--    <div class="col-sm-4">-->
+<!--      <span class="glyphicon glyphicon-lock logo-small" style="color: #800000;"></span>-->
+<!--      <h4>JOB DONE</h4>-->
+<!--      <p>Lorem ipsum dolor sit amet..</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <br><br>-->
+<!--  <div class="row">-->
+<!--    <div class="col-sm-4">-->
+<!--      <span class="glyphicon glyphicon-leaf logo-small" style="color: #800000;"></span>-->
+<!--      <h4>GREEN</h4>-->
+<!--      <p>Lorem ipsum dolor sit amet..</p>-->
+<!--    </div>-->
+<!--    <div class="col-sm-4">-->
+<!--      <span class="glyphicon glyphicon-certificate logo-small" style="color: #800000;"></span>-->
+<!--      <h4>CERTIFIED</h4>-->
+<!--      <p>Lorem ipsum dolor sit amet..</p>-->
+<!--    </div>-->
+<!--    <div class="col-sm-4">-->
+<!--      <span class="glyphicon glyphicon-wrench logo-small" style="color: #800000;"></span>-->
+<!--      <h4 style="color:#303030;">HARD WORK</h4>-->
+<!--      <p>Lorem ipsum dolor sit amet..</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!-- Container (Portfolio Section) -->
+<!--<div class="container-fluid text-center bg-grey">-->
+<!--  <h2 style="color:white;">Portfolio</h2><br>-->
+<!--  <h4 style="color:white;">What we have created</h4>-->
+<!--  <div class="row text-center">-->
+<!--    <div class="col-sm-4">-->
+<!--      <div class="thumbnail">-->
+<!--        <img src="paris.jpg" alt="Paris" width="400" height="300">-->
+<!--        <p><strong>Paris</strong></p>-->
+<!--        <p>Yes, we built Paris</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-sm-4">-->
+<!--      <div class="thumbnail">-->
+<!--        <img src="newyork.jpg" alt="New York" width="400" height="300">-->
+<!--        <p><strong>New York</strong></p>-->
+<!--        <p>We built New York</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-sm-4">-->
+<!--      <div class="thumbnail">-->
+<!--        <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">-->
+<!--        <p><strong>San Francisco</strong></p>-->
+<!--        <p>Yes, San Fran is ours</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
 </body>
 </html>
+
+<!-- FUNCTIONS -->
+<script>
+function value(value, slide) {
+  $(slide).val(value);
+}
+
+function stopChange() {
+  var index;
+  var elements = document.getElementsByName("emotion");
+  var len = elements.length;
+
+  for(index = 0; index < len; index++){
+    elements[index].disabled = true;
+  }
+
+}
+var age=5;
+$('#age').html('Age: ' + age);
+
+var gender = 'Male';
+$('#gender').html('Gender: ' + gender);
+
+</script>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== ""){
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})
+</script>
+
+
