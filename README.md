@@ -28,5 +28,5 @@ Below are the team members who worked on the project. If you would like to contr
 - [Victor Qin](https://github.com/kvothey)
 - [Lin Zhu](https://github.com/linsanity00)
 
-##Devpost Submission to HackHarvard 2017
+## Devpost Submission to HackHarvard 2017
 ![alt text](https://github.com/anthonyanader/timeboARd/raw/master/logos/hh_logo.png)
