@@ -15,6 +15,11 @@ var madSlideTotal = 0;
 var numPhotos = 0;
 var allImages;
 
+// window.onresize = function() {
+//     document.getElementById("myModal").width = document.documentElement.clientWidth;
+//     document.getElementById("modalBody").width = document.documentElement.clientWidth;
+// }
+
 function value(value, slide) {
   $("#" + slide).val(value);
 }

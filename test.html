@@ -80,22 +80,28 @@
     </script>  
 
     <br><br>
+    <!-- Trigger/Open The Modal -->
+
     <div class="col-md-12">
       <p align="center">
         <label style="color:#800; font-size:150%" for="inputImage">Image index to analyze: </label>
         <input type="text" id="inputImage" name="inputImage">
-          <button onclick="getData();" class="button" data-toggle="modal" data-target="#largeModal">Analyze Image</button>
+          <button onclick="getData();" class="btn btn-primary" data-toggle="modal" data-target="#largeModal">Large modal</button>
         <button id="myBtn2" class="button" >Analyze All</button>
       </p>
       
     </div>
+
+
+    <!-- Large modal -->
+
  
     <div id="largeModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Image Analysis</h4>
+                    <h4 class="modal-title">Large Modal</h4>
                 </div>
                 <div class="modal-body">
                     <table>
@@ -129,13 +135,98 @@
            </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="button" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">OK</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  Launch demo modal
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <table>
+            <tr>
+              <th>
+                <br><br>
+                <img id="sourceImage" style="max-height:auto; max-width:100%" class="srcImage" />
+              </th>
+              <th style="padding:1px">
+                <div style="border-left:medium #800 solid; height:600px;"></div>
+              </th>
+              <th>
+                <h2 id="gender" style="float: center; text-align=center; font-size:250%;">Gender: </h2>
+                <h2 id="age" style="float: center; text-align=ceter; font-size:250%;">Age: </h2>
+              </th>
+              <th style="padding:1px">
+                <div style="border-left:medium #800 solid; height:600px;"></div> 
+              </th>
+              <th>
+               <p style="width:550px"><h4 style="float: left; text-align=left; font-size:250%;">&#x1F641; Sadness</h4><h4 style="float: right; text-align=right; font-size:250%;"> Happiness &#x1F600;</h4></p>
+               <input type="range" id="happiness" name="emotion" class="slider" min="0" max="1" step=".001">
+               <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F610; Neutral</h4><h4 style="float: right; text-align=right; font-size:250%;"> Anger &#x1F621;</h4></p>
+               <input type="range" id="anger" name="emotion" class="slider" min="0" max="1" step=".001">
+               <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F62E; No Contempt</h4><h4 style="float: right; text-align=right; font-size:250%;"> Contempt &#x1F624;</h4></p>
+               <input type="range" id="contempt" name="emotion" class="slider" min="0" max="1" step=".001">
+               <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F644; No Fear</h4><h4 style="float: right; text-align=right; font-size:250%;"> Fear &#x1F631;</h4></p>
+               <input type="range" id="fear" name="emotion" class="slider" min="0" max="1" step=".001">
+               <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F634; No Surprise</h4><h4 style="float: right; text-align=right; font-size:250%;"> Surprise &#x1F632;</h4></p>
+               <input type="range" id="surprise" name="emotion" class="slider" min="0" max="1" step=".001">
+             </th>
+           </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+var btn2 = document.getElementById("myBtn2");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+  getData();
+}
+
+btn2.onclick = function() {
+  analyzeAll();
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </div>
 
 <!-- Container (About Section) -->
