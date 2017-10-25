@@ -1,353 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>CognoSeer</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
-  <script src="../javascripts/script.js"></script>
-  <script src="../javascripts/dropzone.js"></script>
-  <link rel="stylesheet" href="/stylesheets/dropzone.css" />
-  <link rel="stylesheet" href="/stylesheets/dropzone_edit.css" />
-  <link rel="stylesheet" href="/stylesheets/style.css" />
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-
-  <script>
-    function preview_images()
-    {
-     var total_file=document.getElementById("images").files.length;
-     for(var i=0;i<total_file;i++)
-     {
-      $('#image_preview').append("<div class='col-md-3'><img class='img-responsive' src='"+URL.createObjectURL(event.target.files[i])+"'></div>");
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>CognoSeer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
+    <script src="../javascripts/script.js"></script>
+    <script src="../javascripts/dropzone.js"></script>
+    <link rel="stylesheet" href="/stylesheets/dropzone.css" />
+    <link rel="stylesheet" href="/stylesheets/dropzone_edit.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>
+    function preview_images() {
+        var total_file = document.getElementById("images").files.length;
+        for (var i = 0; i < total_file; i++) {
+            $('#image_preview').append("<div class='col-md-3'><img class='img-responsive' src='" + URL.createObjectURL(event.target.files[i]) + "'></div>");
+        }
     }
-  }
-</script>
-
+    </script>
 </head>
+
 <body style="font-family:Lato, sans-serif;" id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="stopChange()">
-
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#home">HOME</a></li>
-          <li><a href="#statistics">STATS</a></li>
-          <li><a href="#about">ABOUT</a></li>
-          <li><a href="#contact">TEAM</a></li>
-          <li><a href="#contactus">CONTACT</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="jumbotron text-center" id="home">
-    <h1>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#statistics">STATS</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#contact">TEAM</a></li>
+                    <li><a href="#contactus">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron text-center" id="home">
+        <h1>
      <a><img src="https://image.ibb.co/nH7m5m/sun_305283_960_720.png" alt="sun_305283_960_720" border="0"></a></h1>
-
-     <h1>
+        <h1>
       CognoSeer
     </h1>
-  </div>
-
-  <!-- Upload section -->
-  <div class="container">
-    <h1 style="color:#800" align="center">Analyze Faces:</h1>
-    <p style="color:#800; font-size:125%" align="center">Upload or drag and drop an image that includes a face or faces, then click the <strong>"Analyze Image"</strong> button.</p>
-    <br><br>
-    <div style="width:70%; margin:0px auto; ">
-      <form id ="myId" class="dropzone" enctype="multipart/form-data">
-        <span class="glyphicon glyphicon-download"></span><br/>
-      </form>
-      <br>
     </div>
-    <script src="../javascripts/upload.js">
-    </script>  
-
-    <br><br>
-    <div class="col-md-12">
-      <p align="center">
-        <label style="color:#800; font-size:150%" for="inputImage">Image index to analyze: </label>
-        <input type="text" id="inputImage" name="inputImage">
-        <button onclick="getData();" class="button" data-toggle="modal" data-target="#largeModal">Analyze Image</button>
-        <button id="myBtn2" class="button" >Analyze All</button>
-      </p>
-      
-    </div>
-
-    <div id="largeModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button style="float:left" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Image Analysis</h4>
-          </div>
-          <div class="modal-body">
-            <table>
-              <tr>
-                <th>
-                  <br><br>
-                  <img id="sourceImage" style="max-height:auto; max-width:100%" class="srcImage" />
-                </th>
-                <th style="padding:1px">
-                  <div style="border-left:medium #800 solid; height:600px;"></div>
-                </th>
-                <th>
-                  <h2 id="gender" style="float: center; text-align=center; font-size:250%;">Gender: </h2>
-                  <h2 id="age" style="float: center; text-align=ceter; font-size:250%;">Age: </h2>
-                </th>
-                <th style="padding:1px">
-                  <div style="border-left:medium #800 solid; height:600px;"></div> 
-                </th>
-                <th>
-                 <p style="width:550px"><h4 style="float: left; text-align=left; font-size:250%;">&#x1F641; Sadness</h4><h4 style="float: right; text-align=right; font-size:250%;"> Happiness &#x1F600;</h4></p>
-                 <input type="range" id="happiness" name="emotion" class="slider" min="0" max="1" step=".001">
-                 <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F610; Neutral</h4><h4 style="float: right; text-align=right; font-size:250%;"> Anger &#x1F621;</h4></p>
-                 <input type="range" id="anger" name="emotion" class="slider" min="0" max="1" step=".001">
-                 <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F62E; No Contempt</h4><h4 style="float: right; text-align=right; font-size:250%;"> Contempt &#x1F624;</h4></p>
-                 <input type="range" id="contempt" name="emotion" class="slider" min="0" max="1" step=".001">
-                 <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F644; No Fear</h4><h4 style="float: right; text-align=right; font-size:250%;"> Fear &#x1F631;</h4></p>
-                 <input type="range" id="fear" name="emotion" class="slider" min="0" max="1" step=".001">
-                 <p><h4 style="float: left; text-align=left; font-size:250%;">&#x1F634; No Surprise</h4><h4 style="float: right; text-align=right; font-size:250%;"> Surprise &#x1F632;</h4></p>
-                 <input type="range" id="surprise" name="emotion" class="slider" min="0" max="1" step=".001">
-               </th>
-             </table>
-           </div>
-           <div class="modal-footer">
-            <button type="button" class="button" data-dismiss="modal">Close</button>
-          </div>
+    <!-- Upload section -->
+    <div class="container">
+        <h1 style="color:#800" align="center">Analyze Faces:</h1>
+        <p style="color:#800; font-size:125%" align="center">Upload or drag and drop an image that includes a face or faces, then click the <strong>"Analyze Image"</strong> button.</p>
+        <br>
+        <br>
+        <div style="width:70%; margin:0px auto; ">
+            <form id="myId" class="dropzone" enctype="multipart/form-data">
+                <span class="glyphicon glyphicon-download"></span>
+                <br/>
+            </form>
+            <br>
         </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- Container (About Section) -->
-<div class="event-stats" id="statistics">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 align="center">Event Statistics</h1>
-    </div>
-  </div>
-  <br><hr noshade="#fff">
-  <div class="row">
-    <div class="col-md-4">
-      <h3 id="maleTotal" align="center">Male Participants:</h3>
-    </div>
-    <div class="col-md-4">
-      <h3 id="femaleTotal" align="center">Female Participants:</h3>
-    </div>
-    <div class="col-md-4">
-      <h3 id="avgAge" align="center">Average Age:</h3>
-    </div>
-  </div>
-  <br><hr noshade="#fff">
-  <div class="row" align="center">
-    <p><h2 style="float: center; text-align=center; font-size:300%">Emotions</h2></p>
-  </div>
-  <br>
-  <div class="row" align="center">
-   <div class="col-md-2">
-   </div>
-   <div class="col-md-8" >
-    <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F641; Sadness</h4><h4 style="float: right; text-align=right; font-size:200%;"> Happiness &#x1F600;</h4></p>
-    <input type="range" id="happinessTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F610; Neutral</h4><h4 style="float: right; text-align=right; font-size:200%;"> Anger &#x1F621;</h4></p>
-    <input type="range" id="angerTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F62E; No Contempt</h4><h4 style="float: right; text-align=right; font-size:200%;"> Contempt &#x1F624;</h4></p>
-    <input type="range" id="contemptTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F644; No Fear</h4><h4 style="float: right; text-align=right; font-size:200%;"> Fear &#x1F631;</h4></p>
-    <input type="range" id="fearTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-    <p><h4 style="float: left; text-align=left; font-size:200%;">&#x1F634; No Surprise</h4><h4 style="float: right; text-align=right; font-size:200%;"> Surprise &#x1F632;</h4></p>
-    <input type="range" id="surpriseTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
-  </div>
-  <div class="col-md-2">
-  </div>
-</div>
-<br><hr noshade="#fff">
-<div class="row">
-  <div class="col-md-8">
-    <h3 style="float:left" id="numCeleb" align="center">Celebrities Detected:&nbsp;</h3>
-  </div>
-  <div class="col-md-4">
-    <h3 id="numPhoto" align="center">Photos Taken:</h3>
-  </div>
-</div>
-
-</div>
-
-
-<!-- About section -->
-<div id="about" class="container-fluid2">
-  <div class="row">
-    <div class="col-md-12">
-      <h2 align="center">About CognoSeer</h2>
-      <p style="line-height:30px; font-size:150%; padding-left:160px; padding-right: 160px" align="center"><br>Using the <strong>Microsoft Azure Computer Vision API</strong> and <strong>Face API</strong>, CognoSeer takes event analytics to the next level. Every event planner knows how hard it is to find <strong>accurate statistics</strong> about how their event went and use that to inform future plans. How many people showed up? What demographics attended in higher numbers? How did people feel during the event? All this information and more can be used to evaluate the <strong>performance</strong> of an event and provide planners with much needed information about it. 
-        <br><br>Best of all, it's <strong>crowd-sourced</strong>. Instead of having to rely on their own limited set of photographs, planners can get images from participants. By using both their own images and those images from attendees, organizers get a vastly greater pool of data through Cognoseer.</p>
-      </div>
-    </div>
-  </div>
-
-  <div id="contact" class="meet-team">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 align="center">Meet the Team</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <h2></h2>
-      </div>
-    </div>
-
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <section class="team">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-10 col-md-offset-1">
-            <div class="col-lg-12">
-              <div class="row pt-md">
-
-
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
-                  <div class="img-box">
-                    <img src="https://i.imgur.com/zWIddhL.jpg" class="img-responsive">
-                  </div>
-                  <h1 style="font-size:170%;">Austin Hwang</h1>
-                  <h2 style="font-size:100%;">A.B Candidate in CS</h2>
-                  <p style="font-size:100%;">Austin's a SoCal boy from Huntington Beach, CA but loving life in Massachusetts. Hit up Austin Hwang Photoography for photographs if you ever need any, he's a pro (I mean, just check out his and Victor's photos above!).</p>
+        <script src="../javascripts/upload.js">
+        </script>
+        <br>
+        <br>
+        <div class="col-md-12">
+            <p align="center">
+                <label style="color:#800; font-size:150%" for="inputImage">Image index to analyze: </label>
+                <input type="text" id="inputImage" name="inputImage">
+                <button onclick="getData();" class="button" data-toggle="modal" data-target="#largeModal">Analyze Image</button>
+                <button id="myBtn2" class="button">Analyze All</button>
+            </p>
+        </div>
+        <div id="largeModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button style="float:left" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Image Analysis</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table>
+                            <tr>
+                                <th>
+                                    <br>
+                                    <br>
+                                    <img id="sourceImage" style="max-height:auto; max-width:100%" class="srcImage" />
+                                </th>
+                                <th style="padding:1px">
+                                    <div style="border-left:medium #800 solid; height:600px;"></div>
+                                </th>
+                                <th>
+                                    <h2 id="gender" style="float: center; text-align=center; font-size:250%;">Gender: </h2>
+                                    <h2 id="age" style="float: center; text-align=ceter; font-size:250%;">Age: </h2>
+                                </th>
+                                <th style="padding:1px">
+                                    <div style="border-left:medium #800 solid; height:600px;"></div>
+                                </th>
+                                <th>
+                                    <p style="width:550px">
+                                        <h4 style="float: left; text-align=left; font-size:250%;">&#x1F641; Sadness</h4>
+                                        <h4 style="float: right; text-align=right; font-size:250%;"> Happiness &#x1F600;</h4></p>
+                                    <input type="range" id="happiness" name="emotion" class="slider" min="0" max="1" step=".001">
+                                    <p>
+                                        <h4 style="float: left; text-align=left; font-size:250%;">&#x1F610; Neutral</h4>
+                                        <h4 style="float: right; text-align=right; font-size:250%;"> Anger &#x1F621;</h4></p>
+                                    <input type="range" id="anger" name="emotion" class="slider" min="0" max="1" step=".001">
+                                    <p>
+                                        <h4 style="float: left; text-align=left; font-size:250%;">&#x1F62E; No Contempt</h4>
+                                        <h4 style="float: right; text-align=right; font-size:250%;"> Contempt &#x1F624;</h4></p>
+                                    <input type="range" id="contempt" name="emotion" class="slider" min="0" max="1" step=".001">
+                                    <p>
+                                        <h4 style="float: left; text-align=left; font-size:250%;">&#x1F644; No Fear</h4>
+                                        <h4 style="float: right; text-align=right; font-size:250%;"> Fear &#x1F631;</h4></p>
+                                    <input type="range" id="fear" name="emotion" class="slider" min="0" max="1" step=".001">
+                                    <p>
+                                        <h4 style="float: left; text-align=left; font-size:250%;">&#x1F634; No Surprise</h4>
+                                        <h4 style="float: right; text-align=right; font-size:250%;"> Surprise &#x1F632;</h4></p>
+                                    <input type="range" id="surprise" name="emotion" class="slider" min="0" max="1" step=".001">
+                                </th>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="button" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-
-
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
-                  <div class="img-box">
-                    <img src="https://i.imgur.com/JHr4rdo.jpg" class="img-responsive">
-                  </div>
-                  <h1 style="font-size:160%;">Manasi Maheshwari</h1>
-                  <h2 style="font-size:100%;">A.B Candidate in CS</h2>
-                  <p style="font-size:100%;">Manasi's from Fremont, CA but as much as the Bae Area beckons her, she loves exploring Cambridge and Boston in her free time. She enjoys long walks along the river and if you're ever looking for the best views, she'll probably be able to help you find them.</p>
-                </div>
-
-
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
-                  <div class="img-box">
-                    <img src="https://i.imgur.com/MHexTkm.jpg" class="img-responsive">
-                  </div>
-                  <h1 style="font-size:170%;">Victor Qin</h1>
-                  <h2 style="font-size:100%;">A.B Candidate in MechE</h2>
-                  <p style="font-size:100%;">Victor's been doing robotics for years now and can't remember a time when he didn't yearn to create and build new things. Born and raised in North Hollywood, CA, he loves going to the beach and loves even more to have new friends join him.</p>
-                </div>
-
-
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
-                  <div class="img-box">
-                    <img src="https://i.imgur.com/7awUIpe.jpg" class="img-responsive">
-                  </div>
-                  <h1 style="font-size:170%;">Lin Zhu</h1>
-                  <h2 style="font-size:100%;">A.B Candidate in CS</h2>
-                  <p style="font-size:100%;">Lin's a boba connoiseur from Berkeley, CA and don't you forget it. She loves running and going to the gym (and then stopping for donuts, because who doesn't love Krispy Kreme?). </p>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-
+    </div>
+    <!-- Container (About Section) -->
+    <div class="event-stats" id="statistics">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 align="center">Event Statistics</h1>
+            </div>
+        </div>
+        <br>
+        <hr noshade="#fff">
+        <div class="row">
+            <div class="col-md-4">
+                <h3 id="maleTotal" align="center">Male Participants:</h3>
+            </div>
+            <div class="col-md-4">
+                <h3 id="femaleTotal" align="center">Female Participants:</h3>
+            </div>
+            <div class="col-md-4">
+                <h3 id="avgAge" align="center">Average Age:</h3>
+            </div>
+        </div>
+        <br>
+        <hr noshade="#fff">
+        <div class="row" align="center">
+            <p>
+                <h2 style="float: center; text-align=center; font-size:300%">Emotions</h2></p>
+        </div>
+        <br>
+        <div class="row" align="center">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <p>
+                    <h4 style="float: left; text-align=left; font-size:200%;">&#x1F641; Sadness</h4>
+                    <h4 style="float: right; text-align=right; font-size:200%;"> Happiness &#x1F600;</h4></p>
+                <input type="range" id="happinessTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+                <p>
+                    <h4 style="float: left; text-align=left; font-size:200%;">&#x1F610; Neutral</h4>
+                    <h4 style="float: right; text-align=right; font-size:200%;"> Anger &#x1F621;</h4></p>
+                <input type="range" id="angerTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+                <p>
+                    <h4 style="float: left; text-align=left; font-size:200%;">&#x1F62E; No Contempt</h4>
+                    <h4 style="float: right; text-align=right; font-size:200%;"> Contempt &#x1F624;</h4></p>
+                <input type="range" id="contemptTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+                <p>
+                    <h4 style="float: left; text-align=left; font-size:200%;">&#x1F644; No Fear</h4>
+                    <h4 style="float: right; text-align=right; font-size:200%;"> Fear &#x1F631;</h4></p>
+                <input type="range" id="fearTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+                <p>
+                    <h4 style="float: left; text-align=left; font-size:200%;">&#x1F634; No Surprise</h4>
+                    <h4 style="float: right; text-align=right; font-size:200%;"> Surprise &#x1F632;</h4></p>
+                <input type="range" id="surpriseTotal" name="emotion" class="sliderTotal" min="0" max="1" step=".001">
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <br>
+        <hr noshade="#fff">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 style="float:left" id="numCeleb" align="center">Celebrities Detected:&nbsp;</h3>
+            </div>
+            <div class="col-md-4">
+                <h3 id="numPhoto" align="center">Photos Taken:</h3>
+            </div>
+        </div>
+    </div>
+    <!-- About section -->
+    <div id="about" class="container-fluid2">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 align="center">About CognoSeer</h2>
+                <p style="line-height:30px; font-size:150%; padding-left:160px; padding-right: 160px" align="center">
+                    <br>Using the <strong>Microsoft Azure Computer Vision API</strong> and <strong>Face API</strong>, CognoSeer takes event analytics to the next level. Every event planner knows how hard it is to find <strong>accurate statistics</strong> about how their event went and use that to inform future plans. How many people showed up? What demographics attended in higher numbers? How did people feel during the event? All this information and more can be used to evaluate the <strong>performance</strong> of an event and provide planners with much needed information about it.
+                    <br>
+                    <br>Best of all, it's <strong>crowd-sourced</strong>. Instead of having to rely on their own limited set of photographs, planners can get images from participants. By using both their own images and those images from attendees, organizers get a vastly greater pool of data through Cognoseer.</p>
+            </div>
+        </div>
+    </div>
+    <div id="contact" class="meet-team">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 align="center">Meet the Team</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2></h2>
+            </div>
+        </div>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <section class="team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="col-lg-12">
+                            <div class="row pt-md">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+                                    <div class="img-box">
+                                        <img src="https://i.imgur.com/zWIddhL.jpg" class="img-responsive">
+                                    </div>
+                                    <h1 style="font-size:170%;">Austin Hwang</h1>
+                                    <h2 style="font-size:100%;">A.B Candidate in CS</h2>
+                                    <p style="font-size:100%;">Austin's a SoCal boy from Huntington Beach, CA but loving life in Massachusetts. Hit up Austin Hwang Photoography for photographs if you ever need any, he's a pro (I mean, just check out his and Victor's photos above!).</p>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+                                    <div class="img-box">
+                                        <img src="https://i.imgur.com/JHr4rdo.jpg" class="img-responsive">
+                                    </div>
+                                    <h1 style="font-size:160%;">Manasi Maheshwari</h1>
+                                    <h2 style="font-size:100%;">A.B Candidate in CS</h2>
+                                    <p style="font-size:100%;">Manasi's from Fremont, CA but as much as the Bae Area beckons her, she loves exploring Cambridge and Boston in her free time. She enjoys long walks along the river and if you're ever looking for the best views, she'll probably be able to help you find them.</p>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+                                    <div class="img-box">
+                                        <img src="https://i.imgur.com/MHexTkm.jpg" class="img-responsive">
+                                    </div>
+                                    <h1 style="font-size:170%;">Victor Qin</h1>
+                                    <h2 style="font-size:100%;">A.B Candidate in MechE</h2>
+                                    <p style="font-size:100%;">Victor's been doing robotics for years now and can't remember a time when he didn't yearn to create and build new things. Born and raised in North Hollywood, CA, he loves going to the beach and loves even more to have new friends join him.</p>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 profile">
+                                    <div class="img-box">
+                                        <img src="https://i.imgur.com/7awUIpe.jpg" class="img-responsive">
+                                    </div>
+                                    <h1 style="font-size:170%;">Lin Zhu</h1>
+                                    <h2 style="font-size:100%;">A.B Candidate in CS</h2>
+                                    <p style="font-size:100%;">Lin's a boba connoiseur from Berkeley, CA and don't you forget it. She loves running and going to the gym (and then stopping for donuts, because who doesn't love Krispy Kreme?). </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
     <!-- Container (Contact Section) -->
     <div id="contactus" class="container-fluid2">
-      <h2 class="text-center">CONTACT</h2>
-      <div class="row">
-        <div class="col-sm-5">
-          <p style="font-size: 150%">Contact us and we'll get back to you within 24 hours.</p>
-          <p style="font-size: 150%"><span class="glyphicon glyphicon-map-marker"></span> Cambridge, MA</p>
-          <p style="font-size: 150%"><span class="glyphicon glyphicon-phone"></span> (714) 147 9012</p>
-          <p style="font-size: 150%"><span class="glyphicon glyphicon-envelope"></span> info@cognoseer.org</p>
+        <h2 class="text-center">CONTACT</h2>
+        <div class="row">
+            <div class="col-sm-5">
+                <p style="font-size: 150%">Contact us and we'll get back to you within 24 hours.</p>
+                <p style="font-size: 150%"><span class="glyphicon glyphicon-map-marker"></span> Cambridge, MA</p>
+                <p style="font-size: 150%"><span class="glyphicon glyphicon-phone"></span> (714) 147 9012</p>
+                <p style="font-size: 150%"><span class="glyphicon glyphicon-envelope"></span> info@cognoseer.org</p>
+            </div>
+            <div class="col-sm-7 slideanim">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <input class="form-control" id="name" name="name" placeholder="Name" type="name" required>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                    </div>
+                </div>
+                <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <button class="button pull-right" type="submit">Send</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-7 slideanim">
-          <div class="row">
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="name" name="name" placeholder="Name" type="name" required>
-            </div>
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-            </div>
-          </div>
-          <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-          <div class="row">
-            <div class="col-sm-12 form-group">
-              <button class="button pull-right" type="submit">Send</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-
     <footer class="container-fluid text-center">
-      <a href="#myPage" title="To Top">
+        <a href="#myPage" title="To Top">
         <span class="glyphicon glyphicon-chevron-up"></span>
       </a>
-      <p>All rights reserved &#x24B8; 2017 CognoSeer</p>
+        <p>All rights reserved &#x24B8; 2017 CognoSeer</p>
     </footer>
+</body>
 
-  </body>
-  </html>
+</html>
+<!-- FUNCTIONS -->
+<script>
+function stopChange() {
+    var index;
+    var elements = document.getElementsByName("emotion");
+    var len = elements.length;
 
-  <!-- FUNCTIONS -->
-  <script>
-
-    function stopChange() {
-      var index;
-      var elements = document.getElementsByName("emotion");
-      var len = elements.length;
-
-      for(index = 0; index < len; index++){
+    for (index = 0; index < len; index++) {
         elements[index].disabled = true;
-      }
-
     }
 
-  </script>
+}
+</script>
+<script>
+$(document).ready(function() {
+    // Add smooth scrolling to all links in navbar + footer link
+    $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
 
-  <script>
-    $(document).ready(function(){
-  // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== ""){
-      // Prevent default anchor click behavior
-      event.preventDefault();
+            // Store hash
+            var hash = this.hash;
 
-      // Store hash
-      var hash = this.hash;
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 900, function() {
 
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 900, function(){
-
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+            });
+        } // End if
+    });
 })
 </script>
-
-
