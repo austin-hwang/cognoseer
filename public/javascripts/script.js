@@ -25,7 +25,7 @@ function getEmotionScore(var1, var2) {
 
 function getData(){        
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://www.cognoseer.herokuapp.com/image', true);
+    xhr.open('POST', '/image', true);
     xhr.onload = function (e) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
