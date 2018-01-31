@@ -44,9 +44,9 @@ function processImage(data) {
     console.log("Value: " + parseInt(document.getElementById("inputImage").value));
     console.log("Image links: " + data[1]);
 
-    var subscriptionKey = "2445910071604e4dbb2ff57680673887";
+    var subscriptionKey = "8b3da770cc1944978544ec9c62e90649";
 
-    var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+    var uriBase = "https://eastus.api.cognitive.microsoft.com/face/v1.0/detect";
 
     // Request parameters.
     var params = {
@@ -198,9 +198,9 @@ function processImage(data) {
 
 function processImage2(data) {
 
-    var subscriptionKey = "69cfa0f941224f0aa1041e6970f12af0";
+    var subscriptionKey = "5ccb6f003d4b415297801718dd834fac";
 
-    var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/models/celebrities/analyze";
+    var uriBase = "https://eastus.api.cognitive.microsoft.com/vision/v1.0/models/celebrities/analyze";
 
     // Request parameters.
     var params = {
